@@ -1,3 +1,3 @@
-# Booking-Clone
+# Booking Clone
 
 
