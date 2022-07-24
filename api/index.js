@@ -1,6 +1,8 @@
 const express = require('express')
 const mongoose = require('mongoose');
 const dotenv = require('dotenv')
+const authRoute = require('./routes/authRoute')
+
 
 const app = express()
 dotenv.config();
@@ -19,8 +21,6 @@ mongoose.connect(DB , {
   })
 });
 
-app.get('/', (req, res) => {
-    res.status(200).send("hello")
-})
+app.use('/auth',authRoute)
 
 app.listen(8800,() => console.log("running"))
