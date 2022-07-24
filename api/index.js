@@ -9,6 +9,7 @@ const usersRoute = require('./routes/usersRoute')
 
 const app = express()
 dotenv.config();
+app.use(express.json())
 
 const DB= process.env.mongo
 
@@ -16,7 +17,7 @@ mongoose.connect(DB , {
   useNewUrlParser:true,
   useUnifiedTopology: true
 }).then(con => {
-  console.log("DB is connection successful");
+  console.log("DB is connection successful");rtsu
 }).catch(err=>{
   console.log(err)
   server.close(()=>{
