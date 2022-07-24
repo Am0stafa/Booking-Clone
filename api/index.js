@@ -2,6 +2,9 @@ const express = require('express')
 const mongoose = require('mongoose');
 const dotenv = require('dotenv')
 const authRoute = require('./routes/authRoute')
+const hotelsRoute = require('./routes/hotelsRoute')
+const roomsRoutes = require('./routes/roomsRoutes')
+const usersRoute = require('./routes/usersRoute')
 
 
 const app = express()
@@ -21,6 +24,9 @@ mongoose.connect(DB , {
   })
 });
 
-app.use('/auth',authRoute)
+app.use('/api/auth',authRoute)
+app.use('/api/users',usersRoute)
+app.use('/api/rooms',roomsRoutes)
+app.use('/api/hotels',hotelsRoute)
 
 app.listen(8800,() => console.log("running"))
