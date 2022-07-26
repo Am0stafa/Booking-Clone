@@ -5,19 +5,19 @@ const authRoute = require('./routes/authRoute')
 const hotelsRoute = require('./routes/hotelsRoute')
 const roomsRoutes = require('./routes/roomsRoutes')
 const usersRoute = require('./routes/usersRoute')
-
+const cookieParser =require('cookie-parser') 
 
 const app = express()
 dotenv.config();
 app.use(express.json())
-
+app.use(cookieParser())
 const DB= process.env.mongo
 
 mongoose.connect(DB , {
   useNewUrlParser:true,
   useUnifiedTopology: true
 }).then(con => {
-  console.log("DB is connection successful");rtsu
+  console.log("DB is connection successful");
 }).catch(err=>{
   console.log(err)
   server.close(()=>{
