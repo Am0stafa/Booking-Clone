@@ -70,3 +70,4 @@ exports.getAllHotels=async (req, res, next) => {
     }
 
 }
+//62ddaee77648496ac15e5212
