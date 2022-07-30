@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useContext} from 'react'
 import {
   faBed,
   faCalendarDays,
@@ -13,9 +13,14 @@ import 'react-date-range/dist/theme/default.css'; // theme css file
 import { DateRange } from 'react-date-range';
 import { format, set } from "date-fns"
 import { useNavigate } from "react-router-dom";
+import { SearchContext } from '../../context/SearchContext';
+import { AuthContext } from '../../context/AuthContext';
 
 
 const Header = ({type}) => {
+  const {user} = useContext(AuthContext)
+
+
     const [date, setDate] = useState([
     {
       startDate: new Date(),
@@ -23,6 +28,8 @@ const Header = ({type}) => {
       key: 'selection'
     }
   ])
+  
+  
   const navigate = useNavigate()
   const [openDate, setOpenDate] = useState(false)
   const [destination, setDestination] = useState("")
@@ -44,7 +51,12 @@ const Header = ({type}) => {
   
   }
   
+  const {dispatch,dates} = useContext(SearchContext)
+
   const handelSearch = ()=>{
+    //! rather than sending them to one component only i will dispatch an action
+    dispatch({type:"NEW_SEARCH",payload: {destination,date,Options}})
+    
     navigate("/hotels",{
       state:{
         destination,

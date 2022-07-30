@@ -6,11 +6,13 @@ const hotelsRoute = require('./routes/hotelsRoute')
 const roomsRoutes = require('./routes/roomsRoutes')
 const usersRoute = require('./routes/usersRoute')
 const cookieParser =require('cookie-parser') 
+const cors = require('cors');
 
 const app = express()
 dotenv.config();
 app.use(express.json())
 app.use(cookieParser())
+app.use(cors())
 const DB= process.env.mongo
 
 mongoose.connect(DB , {

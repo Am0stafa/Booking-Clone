@@ -3,12 +3,13 @@ const roomController = require('../controller/roomsController')
 const router = express.Router();
 const verifyToken = require('../utils/verifyToken')
 
-        //! add verify admin
+        
 router
     //CREATE
     .post('/:hotelId',verifyToken.verifyToken,roomController.createRoom)
     //UPDATE
     .patch('/:id',verifyToken.verifyToken,roomController.update)
+    .patch('/availability/:id',verifyToken.verifyToken,roomController.updateAvailability)
     //DELETE
     .delete('/:id/:hotelId',verifyToken.verifyToken,roomController.deleteRoom)
     //GET 
