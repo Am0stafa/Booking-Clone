@@ -12,32 +12,37 @@ const NewHotel = () => {
   const [info, setInfo] = useState({});
   const [rooms, setRooms] = useState([]);
 
-  const { data, loading, error } = useFetch("/rooms");
+  const { data, loading, error } = useFetch("/rooms",true);
 
   const handleChange = (e) => {
     setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
 
   const handleSelect = (e) => {
+  //? transfer from html collection to an array and we don't want all the properties we want only option.value
     const value = Array.from(
       e.target.selectedOptions,
       (option) => option.value
     );
     setRooms(value);
+    //? finally this will contain room ids
   };
   
-  console.log(files)
+
 
   const handleClick = async (e) => {
     e.preventDefault();
     try {
+    //! firstly we want to upload all the images uploaded
+    //? we will loop over all file and for each file uploading it and storing the url for each one
+    //^ a problem we have is that the files are not array they are objects {0:file one, 1:file two...} so we take the value out of it
       const list = await Promise.all(
         Object.values(files).map(async (file) => {
           const data = new FormData();
           data.append("file", file);
           data.append("upload_preset", "upload");
           const uploadRes = await axios.post(
-            "https://api.cloudinary.com/v1_1/lamadev/image/upload",
+            "https://api.cloudinary.com/v1_1/drr9nf1kc/image/upload",
             data
           );
 
@@ -61,7 +66,7 @@ const NewHotel = () => {
       <div className="newContainer">
         <Navbar />
         <div className="top">
-          <h1>Add New Product</h1>
+          <h1>Add New Hotel</h1>
         </div>
         <div className="bottom">
           <div className="left">
