@@ -1,2 +1,3 @@
 # Booking-Clone
-Ready for deployment
+1)deploy
+2)eerd diagram 
