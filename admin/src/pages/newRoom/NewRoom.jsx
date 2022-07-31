@@ -12,7 +12,7 @@ const NewRoom = () => {
   const [hotelId, setHotelId] = useState(undefined);
   const [rooms, setRooms] = useState([]);
 
-  const { data, loading, error } = useFetch("/hotels");
+  const { data, loading, error } = useFetch("/hotels",true);
 
   const handleChange = (e) => {
     setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
@@ -28,7 +28,7 @@ const NewRoom = () => {
     }
   };
 
-  console.log(info)
+  console.log({...info,abdo:"mos"})
   return (
     <div className="new">
       <Sidebar />
@@ -56,6 +56,8 @@ const NewRoom = () => {
                 <textarea
                   onChange={(e) => setRooms(e.target.value)}
                   placeholder="give comma between room numbers."
+                  style={{ resize: "none" }}
+
                 />
               </div>
               <div className="formInput">
