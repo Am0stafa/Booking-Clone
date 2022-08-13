@@ -134,5 +134,4 @@ const NewHotel = () => {
   );
 };
 
-
 export default NewHotel;
