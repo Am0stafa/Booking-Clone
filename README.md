@@ -1,3 +1,3 @@
 # Booking-Clone
-1)deploy
+https://booking-app-lac.vercel.app/
 2)eerd diagram 
